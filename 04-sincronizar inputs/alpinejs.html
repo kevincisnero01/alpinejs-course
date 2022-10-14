@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atributo</title>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        .hidden{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div x-data="{mensaje: null}">
+        <h1>Sincronizar inputs (x-model)</h1>
+
+        <h2>Ejemplo 1</h2>
+        <p>Sincronizacion automatica al escribir</p>
+        <input type="text" x-model="mensaje">
+        <p x-text="mensaje"></p>
+
+        <br>
+    
+        <h2>Ejemplo 2</h2>
+        <p>Sincronizacion despues de click en el boton</p>
+        <input type="text" x-model="mensaje">
+        <button @click="$refs.msj.innetText=mensaje">Enviar</button>
+        <p x-ref="mensaje"></p>
+    </div>
+</body>
+</script>
+</html>
