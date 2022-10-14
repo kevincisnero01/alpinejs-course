@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atributo</title>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body>
+    <div x-data="data()">
+        <h1>Bucles y Condicion if</h1>
+
+        <h2>Camisas: Array 1 dimension</h2>
+        <ul>
+            <template x-for="product1 in products1">
+                <Li>
+                    <span x-text="product1"></span>
+                </Li>
+            </template>
+        </ul>
+
+        <h2>Zapatos: Array 2 dimensiones</h2>
+        <ul>
+            <template x-for="product2 in products2">
+                <li>
+                    <span x-text="product2.name"></span>
+                </li>
+            </template>
+        </ul>
+
+        <h2>Bolsos: Array 2 dimensiones de objetos</h2>
+        <ul>
+            <template x-for="product3 in products3">
+                <li>
+                    <span x-text="product3.branch"></span> |
+                    <span x-text="product3.stock"></span>
+
+                    <template x-if="product3.stock == 1">
+                        (sin stock)
+                    </template>
+
+                </li>
+            </template>
+        </ul>
+    </div>
+
+    <script>
+        function data(){
+            return {
+                products1 : [
+                    'camisa', 'franela', 'franelilla', 'camisa formal',
+                ],
+                products2 : [
+                    {   
+                        id     : 1,
+                        name   : 'zapatilla',
+                        stock  : 100
+                    },
+                    {   
+                        id     : 2,
+                        name   : 'deportivo',
+                        stock  : 150
+                    },
+                    {   
+                        id     : 3,
+                        name   : 'botines',
+                        stock  : 200
+                    }
+                ],
+                products3 : {
+                    1: {   
+                        id     : 1,
+                        branch   : 'Nomada',
+                        stock  : 100
+                    },
+                    2: {   
+                        id     : 2,
+                        branch   : 'Puma',
+                        stock  : 1
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

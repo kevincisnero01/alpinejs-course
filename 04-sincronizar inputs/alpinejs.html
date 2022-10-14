@@ -6,28 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atributo</title>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <style>
-        .hidden{
-            display: none;
-        }
-    </style>
 </head>
 <body>
-    <div x-data="{mensaje: null}">
+    <div x-data="{msj1: null,msj2: null}">
         <h1>Sincronizar inputs (x-model)</h1>
 
-        <h2>Ejemplo 1</h2>
+        <h2>Ejemplo 1 (x-text)</h2>
         <p>Sincronizacion automatica al escribir</p>
-        <input type="text" x-model="mensaje">
-        <p x-text="mensaje"></p>
+        <input type="text" x-model="msj1">
+        <p x-text="msj1"></p>
 
         <br>
     
-        <h2>Ejemplo 2</h2>
+        <h2>Ejemplo 2 (x-ref)</h2>
         <p>Sincronizacion despues de click en el boton</p>
-        <input type="text" x-model="mensaje">
-        <button @click="$refs.msj.innetText=mensaje">Enviar</button>
-        <p x-ref="mensaje"></p>
+        <input type="text" x-model="msj2">
+        <button @click="$refs.msj2.innerText=msj2">Enviar</button>
+        <p x-ref="msj2"></p>
     </div>
 </body>
 </script>
