@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atributo</title>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body>
+
+    <div x-data="data()" @resize.window="open = window.outerWidth > 768 ? true : false">
+
+        <h1>Eventos</h1>
+
+        <h2>Mensaje por consola basado en <u>click</u></h2>
+        <button @click="console.log('Mensaje por consola')">Click Me</button>
+
+        <h2>Mensaje por consola basado en <u>formulario</u></h2>
+        <form action="#" @submit.prevent="console.log(m1)" placeholder="Escribe aqui y mira la consola">
+            <input type="text" x-model="m1">
+            <button type="submit">Enviar</button>
+        </form>
+
+        <h2>Mensaje por consola basado en <u>cualquier tecla</u></h2>
+        <input type="text" x-model="m2" @keydown="console.log('Tecla presionada')" placeholder="Escribe aqui y mira la consola">
+
+        <h2>Mensaje por consola basado en presionar <u>enter</u></h2>
+        <input type="text" x-model="m3" @keydown.enter="console.log(m3)" placeholder="Escribe aqui y mira la consola">
+
+        <h2>Mensaje por consola basado en presionar <u>flecha de abajo</u></h2>
+        <input type="text" x-model="m4" @keydown.arrow-down="console.log(m4)" placeholder="Escribe aqui y mira la consola">
+
+        <h2>Mensaje por consola basado en presionar <u>combinacion de teclas: ctrl + a</u></h2>
+        <input type="text" x-model="m5" @keydown.ctrl.a="console.log(m5)" placeholder="Escribe aqui y mira la consola">
+
+        <h2>Mensaje que aparece segun el tamño de la pantalla</h2>
+        <p x-show=open>Este es un mensaje que solo aparece en pantalla es mayor a 768</p>
+
+    </div>
+    <script>
+        function data(){
+            return {
+                m1: null,
+                m2: null,
+                m3: null,
+                m4: null,
+                m5: null,
+                open: true
+            }
+        }
+    </script>
+</body>
+</html>
