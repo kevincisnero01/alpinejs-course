@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpine</title>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body>
+    <h1>Metodos Magicos</h1>
+    <div x-data="{message1 : null, message2 : null}">
+        <h2>Reemplazar el mismo elemento</h2>
+        <button @click="$el.innerHTML = 'Text Reemplazado'" > click me 1 </button>
+        <br>
+        
+        <h2>Reemplazar un elemento referenciado</h2>
+        <button @click="$refs.message1.innerHTML = 'Text Reemplazado'" > click me 2</button>
+        <p x-ref="message1">Textp por defecto</p>
+
+        <h2>Disparar evento (Comunicando 2 componentes)</h2>
+        <input type="text" x-model="message2" @input="$dispatch('custom-event', message2)">
+    </div>
+
+    <div x-data="{message2 : null}" @custom-event.window="message2 = $event.detail">
+        <h2>Escuchar evento (Comunicando 2 componentes)</h2>
+        <input type="text" x-model="message2">
+    </div>      
+</body>
+</html>
